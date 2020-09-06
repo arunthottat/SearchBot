@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const Question = require('./models/Question');
-//require('dotenv/config');
+require('dotenv/config');
 
 app.use(express.json());
 
@@ -15,11 +15,9 @@ const questions = [
     // {questionId:5,question_text:'What is Lamda ?',technology:'AWS',answer:'AWS Lambda is a compute service that makes it easy for you to build applications that respond quickly to new information.'}
 ];
 
-app.get('/api/FAQquestions/', (req, res) => {
-  res.send('Hello Node!')
-})
 
-/*app.get('/api/FAQquestions/',async (req,res) => {
+
+app.get('/api/FAQquestions/',async (req,res) => {
      const questions = await Question.find();
     if(questions){
         res.send(questions);
@@ -27,7 +25,7 @@ app.get('/api/FAQquestions/', (req, res) => {
         res.send("No Questions found ");
     } 
 });
-/* 
+
 
 // app.get('/api/questions/:id', async (req,res) => {
 //     // const question = questions.find(q => q.questionId === parseInt(req.params.id));
@@ -120,9 +118,9 @@ mongoose.connect(process.env.DB_CONNECTION,
 { useNewUrlParser: true,useUnifiedTopology: true },
  () =>{
     console.log('connected to mLab db chatbot');
-}); */
+}); 
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 app.listen(port,() => console.log(`Listening on port ${port}....`));
 
 function validateQuestion(question){
